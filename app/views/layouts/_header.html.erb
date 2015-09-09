@@ -8,7 +8,15 @@
         <%= link_to 'About', about_path %>
       </li>
       <li>
-         <%= link_to 'Destinations', destinations_path %>
+         <%= link_to 'Destinations', destinations_path, :country => 'United States' %>
+
+
+      </li>
+      <li>
+
+
+
+          <%= link_to 'United States',controller: "destinations", :country => 'United States' %>
       </li>
     </ul>
   </div>
