@@ -1,15 +1,17 @@
 class DestinationsController < ApplicationController
   before_action :set_destination, only: [:show, :edit, :update, :destroy]
+  include DestinationsHelper
 
   # GET /destinations
   # GET /destinations.json
   def index
-    if params[:country]
-      @destinations = Destination.where(:country => params[:country])
-    else
-    @destinations = Destination.all
+      if params[:country]
+        @destinations = destinations_in_country params[:country]
+      else
+      @destinations = Destination.all
+      end
+    @countries = Destination.pluck(:country).uniq.sort
   end
-end
 
   # GET /destinations/1
   # GET /destinations/1.json

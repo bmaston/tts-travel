@@ -9,7 +9,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body><div class="container">
-<%= render '/layouts/header' %><div class="container">
+<%= render '/layouts/header' %>
+
+<div class="container">
+ <p>Static Countries list hardcoded
+    <%= link_to 'All', destinations_path   %> |
+    <%= link_to 'United States',controller: "destinations", :country => 'United States' %> |
+    <%= link_to 'Canada',controller: "destinations", :country => 'Canada' %></p>
+
+
+
+ <p>Dynamic Countries list from database
+<% @countries.each do |country| %>
+<% url_safe_country = country %>
+<%= link_to country, :controller => "destinations", :country => url_safe_country %> |
+<% end %></p>
+
+
+
+
+</div>
 <%= yield %>
 
 </div></div>
